@@ -1,4 +1,7 @@
-Шаблон для 2-гої роботи з архітектури ПЗ
----
+kpi3-lab2
 
-Використайте кнопку **"Use this template"**, щоб створити власний репозиторій.
+Team members:
+
+Shkarban Volodymur IM-32
+
+Pulenko Evheniy IM-32
