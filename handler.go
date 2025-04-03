@@ -17,7 +17,13 @@ type ExpressionResponse struct {
 func expressionHandler(w http.ResponseWriter, r *http.Request) {
 	var req ExpressionRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		http.Error(w, "Невірний формат запиту", http.StatusBadRequest)
+		http.Error(w, `{"error": "Invalid JSON"}`, http.StatusBadRequest)
+		return
+	}
+
+	// Якщо вираз порожній, повертаємо 400 Bad Request
+	if req.Expression == "" {
+		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
@@ -29,9 +35,4 @@ func expressionHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(resp)
-}
-
-func main() {
-	http.HandleFunc("/convert", expressionHandler)
-	http.ListenAndServe(":6060", nil)
 }
