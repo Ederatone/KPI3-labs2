@@ -10,38 +10,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-type ExpressionRequest struct {
-	Expression string `json:"expression"`
-}
-
-type ExpressionResponse struct {
-	Infix string `json:"infix,omitempty"`
-	Error string `json:"error,omitempty"`
-}
-
-func expressionHandler(w http.ResponseWriter, r *http.Request) {
-	var req ExpressionRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		http.Error(w, `{"error": "Invalid JSON"}`, http.StatusBadRequest)
-		return
-	}
-
-	// Якщо вираз порожній (або відсутнє поле "expression" в JSON), повертаємо 400 Bad Request
-	if req.Expression == "" {
-		w.WriteHeader(http.StatusBadRequest) // Повертаємо 400 Bad Request
-		return                               // Без тіла відповіді, як очікує тест
-	}
-
-	infix, err := PrefixToInfix(req.Expression)
-	resp := ExpressionResponse{Infix: infix}
-	if err != nil {
-		resp.Error = err.Error()
-	}
-
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(resp)
-}
-
 func TestExpressionHandler(t *testing.T) {
 	tests := []struct {
 		name           string
