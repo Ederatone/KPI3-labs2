@@ -17,37 +17,37 @@ func TestPrefixToInfix(t *testing.T) {
 		{
 			name:          "Simple addition",
 			prefix:        "+ 2 3",
-			expectedInfix: "(2 + 3)",
+			expectedInfix: "(2+3)",
 			expectError:   false,
 		},
 		{
 			name:          "Simple subtraction",
 			prefix:        "- 5 2",
-			expectedInfix: "(5 - 2)",
+			expectedInfix: "(5-2)",
 			expectError:   false,
 		},
 		{
 			name:          "Simple multiplication",
 			prefix:        "* 4 5",
-			expectedInfix: "(4 * 5)",
+			expectedInfix: "(4*5)",
 			expectError:   false,
 		},
 		{
 			name:          "Simple division",
 			prefix:        "/ 10 2",
-			expectedInfix: "(10 / 2)",
+			expectedInfix: "(10/2)",
 			expectError:   false,
 		},
 		{
 			name:          "Simple exponentiation",
 			prefix:        "^ 2 3",
-			expectedInfix: "(2 ^ 3)",
+			expectedInfix: "(2^3)",
 			expectError:   false,
 		},
 		{
 			name:          "Complex expression",
 			prefix:        "+ 5 * - 4 2 ^ 3 2",
-			expectedInfix: "( 5+ (( 4 - 2 )*( 3 ^ 2 )))",
+			expectedInfix: "(5+((4- 2)*(3^2)))",
 			expectError:   false,
 		},
 		{
@@ -70,8 +70,8 @@ func TestPrefixToInfix(t *testing.T) {
 		},
 		{
 			name:          "Complex with negative numbers",
-			prefix:        "+ -5 * - 4 -2 ^ 3 2",
-			expectedInfix: "((-5 )+(( 4 - (- 2 ))*( 3 ^ 2 )))", // Added parenthesis to negative numbers to be explicit
+			prefix:        "+ -5 * - 4 - 2 ^ 3 2",
+			expectedInfix: "((-5)+((4 - (-2))*(3^2)))", // Added parenthesis to negative numbers to be explicit
 			expectError:   false,
 		},
 	}
