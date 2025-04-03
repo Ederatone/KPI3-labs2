@@ -6,8 +6,9 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"strings"
 
-	"github.com/Ederatone/KPI3-labs2" // Replace with your github username and project name
+	lab2 "github.com/Ederatone/KPI3-labs2" // Replace with your github username and project name
 )
 
 type ComputeHandler struct {

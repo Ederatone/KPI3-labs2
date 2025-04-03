@@ -1,4 +1,4 @@
-package main
+package lab2
 
 import (
 	"bytes"
@@ -18,7 +18,7 @@ func TestExpressionHandler(t *testing.T) {
 		expectedInfix  string
 		expectedError  string
 	}{
-		{"Valid expression", `{"expression": "+ 3 4"}`, http.StatusOK, "(3 + 4)", ""},
+		{"Valid expression", `{"expression": "+ 3 4"}`, http.StatusOK, "(3+4)", ""},
 		{"Invalid expression", `{"expression": "+ 3"}`, http.StatusOK, "", "некоректний вираз"},
 		{"Empty expression", `{"expression": ""}`, http.StatusOK, "", "порожній вираз"},
 		{"Invalid JSON", `{"expr": "+ 3 4"}`, http.StatusBadRequest, "", ""},

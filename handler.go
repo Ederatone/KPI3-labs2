@@ -1,4 +1,4 @@
-package main
+package lab2
 
 import (
 	"encoding/json"
@@ -21,7 +21,7 @@ func expressionHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	infix, err := ConvertPrefixToInfix(req.Expression)
+	infix, err := PrefixToInfix(req.Expression)
 	resp := ExpressionResponse{Infix: infix}
 	if err != nil {
 		resp.Error = err.Error()
