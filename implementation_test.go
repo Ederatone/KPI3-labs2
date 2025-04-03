@@ -47,7 +47,7 @@ func TestPrefixToInfix(t *testing.T) {
 		{
 			name:          "Complex expression",
 			prefix:        "+ 5 * - 4 2 ^ 3 2",
-			expectedInfix: "(5+((4- 2)*(3^2)))",
+			expectedInfix: "(5+((4-2)*(3^2)))",
 			expectError:   false,
 		},
 		{
