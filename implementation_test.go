@@ -76,7 +76,7 @@ func TestPrefixToInfix(t *testing.T) {
 		},
 		{
 			name:          "Expression structure from previous debug",
-			prefix:        "+ -5 * -4 -2 ^ 3 2",
+			prefix:        "+ -5 * - 4 -2 ^ 3 2",
 			expectedInfix: "",
 			expectError:   true,
 		},
